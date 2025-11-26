@@ -13,16 +13,32 @@ app.listen(3000);
 
 app.get("/", (req, res) => {
   // res.sendFile("./view/index.html", { root: __dirname });
-  res.render("index");
+
+  const blogs = [
+    {
+      title: "minoo in jurnay",
+      snippet: " Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "romina in jurnay",
+      snippet: " Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "kimia in jurnay",
+      snippet: " Lorem ipsum dolor sit amet consectetur",
+    },
+  ];
+
+  res.render("index", { title: "Home" , blogs });
 });
 
 app.get("/about", (req, res) => {
   // res.sendFile("./view/about.html", { root: __dirname });
-  res.render("about");
+  res.render("about", { title: "about" });
 });
 
 app.get("/blogs/create", (req, res) => {
-  res.render("create");
+  res.render("create", { title: "create" });
 });
 
 // redirect
@@ -33,5 +49,5 @@ app.get("/blogs/create", (req, res) => {
 // 404 page  : دقیقا مثل
 app.use((req, res) => {
   // res.sendFile("./view/404.html", { root: __dirname });
-  res.status(404).render("404");
+  res.status(404).render("404", { title: "404" });
 });

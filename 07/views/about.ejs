@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+  <%- include("./partials/head.ejs") %>
+
   <body>
-    <nav>
-      <div class="site-title">
-        <a href="/">
-          <h1>minicode</h1>
-        </a>
-        Greate site ever
-      </div>
-    </nav>
+    <%- include("partials/nav.ejs") %>
 
-    <ul>
-      <li><a href="/">Blogs</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/blogs/create">New blog</a></li>
-    </ul>
 
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime doloribus,
@@ -36,5 +21,7 @@
       repellendus omnis quam ea voluptatibus aspernatur adipisci illum commodi
       odio aliquid repellat eveniet ullam ab ipsum autem veritatis ut ratione.
     </p>
+    <%- include("partials/footer.ejs") %>
+
   </body>
 </html>
