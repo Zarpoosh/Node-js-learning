@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 
 // express app
 
@@ -11,14 +12,28 @@ app.set("view engine", "ejs");
 // listen for requesr
 app.listen(3000);
 
-app.use((req, res, next) => {
-  console.log("--------------------------------------");
-  console.log("new req was made :");
-  console.log("host:", req.host);
-  console.log("path", req.path);
-  console.log("method : ", req.method);
-  next();
-});
+// connect to mongo db
+const dbURI =
+  "mongodb+srv://minoo:test1234@nodecourse.xtunx5q.mongodb.net/?appName=nodecourse";
+
+
+
+  
+// middelware & static files
+app.use(express.static("public"));
+// app.use(morgan("combined"))
+app.use(morgan("tiny"));
+
+// ! بعد از نصب morgan به این نیازی نداریم
+// app.use((req, res, next) => {
+//   console.log("--------------------------------------");
+//   console.log("new req was made :");
+//   console.log("host:", req.host);
+//   console.log("path", req.path);
+//   console.log("method : ", req.method);
+//   next();
+// });
+// !---------------------------------------------
 
 app.get("/", (req, res) => {
   // res.sendFile("./view/index.html", { root: __dirname });
@@ -46,10 +61,12 @@ app.get("/about", (req, res) => {
   res.render("about", { title: "about" });
 });
 
-app.use((req, res, next) => {
-  console.log("-----------------minicode---------------------");
-  next(); // با استفاده از این متد میتونیم میدل ورهامونو کنترل کنیم
-});
+// !  ---------------------------------------------------------------
+// app.use((req, res, next) => {
+//   console.log("-----------------minicode---------------------");
+//   next(); // با استفاده از این متد میتونیم میدل ورهامونو کنترل کنیم
+// });
+// !  ---------------------------------------------------------------
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "create" });
