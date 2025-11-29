@@ -11,6 +11,15 @@ app.set("view engine", "ejs");
 // listen for requesr
 app.listen(3000);
 
+app.use((req, res, next) => {
+  console.log("--------------------------------------");
+  console.log("new req was made :");
+  console.log("host:", req.host);
+  console.log("path", req.path);
+  console.log("method : ", req.method);
+  next();
+});
+
 app.get("/", (req, res) => {
   // res.sendFile("./view/index.html", { root: __dirname });
 
@@ -29,12 +38,17 @@ app.get("/", (req, res) => {
     },
   ];
 
-  res.render("index", { title: "Home" , blogs });
+  res.render("index", { title: "Home", blogs });
 });
 
 app.get("/about", (req, res) => {
   // res.sendFile("./view/about.html", { root: __dirname });
   res.render("about", { title: "about" });
+});
+
+app.use((req, res, next) => {
+  console.log("-----------------minicode---------------------");
+  next(); // با استفاده از این متد میتونیم میدل ورهامونو کنترل کنیم
 });
 
 app.get("/blogs/create", (req, res) => {
@@ -47,6 +61,7 @@ app.get("/blogs/create", (req, res) => {
 // });
 
 // 404 page  : دقیقا مثل
+// برا درست کردن میدلور کاستوم
 app.use((req, res) => {
   // res.sendFile("./view/404.html", { root: __dirname });
   res.status(404).render("404", { title: "404" });
