@@ -47,6 +47,7 @@ app.get("/api/courses/:id ", (res,req)=>{
 app.post("/api/courses",(res,req)=>{
 if (!req.body.name || req.body.name.length <3 ) {
     req.status(404).send("name is requires !")
+    return
 }
 
     const course={
@@ -54,6 +55,28 @@ if (!req.body.name || req.body.name.length <3 ) {
         name:req.body.name
     }
     course.push(course)
+    res.send(course)
+})
+
+
+app.put("/api/courses/:id", (res,req)=>{
+    const course= courses.find(c=> c.id ===parseInt(req.params.id))
+    if(!course) return res.status(404).send("course with given id not found ")
+        if (!req.body.name || req.body.name.length <3 )
+            return res.status(404).send("name is required and more than 3 charachter ...")
+        
+    course.name=req.body.name
+    res.send(course)
+})
+
+
+
+app.delete("/api/courses/:id", (res,req)=>{
+    const course= courses.find(c=> c.id ===parseInt(req.params.id))
+    if(!course) return res.status(404).send("course with given id not found ")
+
+    const index=courses.indexOf(course)
+    courses.splice(index, 1)
     res.send(course)
 })
 
