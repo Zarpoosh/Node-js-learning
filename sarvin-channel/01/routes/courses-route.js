@@ -3,12 +3,7 @@ const router=express.Router()
 const coursesController=reqire("../controller/courses-controller.js")
 
 
-
-
-
-
 router.get("/", coursesController)
-
 
 // /:id /:name?=id
 // router.get("/:id /:name?", (res,req)=>{
@@ -16,16 +11,10 @@ router.get("/", coursesController)
 // })
 
 router.get("/:id ", coursesController)
-
 // post
 router.post("/",coursesController)
-
-
 router.put("/:id", coursesController)
-
-
-
-router.delete("/:id", )
+router.delete("/:id", coursesController)
 
 
 module.exports=router

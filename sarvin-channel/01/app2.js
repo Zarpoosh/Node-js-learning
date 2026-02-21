@@ -6,8 +6,8 @@
 // console.log(uuid.v4());
 
 // ---------------------------------------------------------
-const logger=require("./logger")
-const logger2=require("./logger")
+const logger=require("./middelwares/logger")
+const logger2=require("./middelwares/logger")
 const helmet=require("helmet")
 const morgan=require("morgan")
 const express=require("express")
@@ -16,6 +16,8 @@ const startupdebug=require("debug")("startup")
 const dbdebug=require("debug")("db")
 const app=express()
 const coursesRoute=require("./routes/courses-route")
+const homeRoute=reqire("./routes/home-route.js")
+
 
 // ! middleware
 app.use(express.json())
@@ -60,6 +62,8 @@ app.use(logger2)
 
 
 app.use("/api/courses", coursesRoute)
+app.use("/", homeRoute)
+
 
 
 const port=process.env.APP_PORT ||3000

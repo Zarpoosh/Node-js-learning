@@ -1,7 +1,7 @@
 
 
 const getHome=(req, res)=>{
-    dbdebug("hello from minoo dbdebug....")
+    // dbdebug("hello from minoo dbdebug....")
     res.send("hello minicode :)")
 }
 
