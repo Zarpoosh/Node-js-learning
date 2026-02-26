@@ -62,6 +62,7 @@ app.use(logger2)
 
 
 app.use("/api/courses", coursesRoute)
+app.use("/api/users", useRoute)
 app.use("/", homeRoute)
 
 
