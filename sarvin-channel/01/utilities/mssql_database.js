@@ -22,25 +22,4 @@ const poolPromise=new sql.ConnectionPool(config).connect().then
 }).catch(err=>{
     console.log(err);
 })
-
-
-const getCourses=async()=>{
-    const pool=await  poolPromise()
-    const request=pool.request()
-    const result=await request.query("select * from courses")
-    console.log(result);
-    return result.recordset
-}
-
-
-const insertCourse=async (title) => {
-    const pool=await  poolPromise()
-    const request=pool.request()
-    request.input("title" , sql.NVarChar , title)
-    const result=await request.query("insert into courses (title) values (@Title)")
-    console.log(result);
-    return result.recordset
-}
-
-insertCourse("php")
-getCourses()
+module.export={sql , poolPromise}
