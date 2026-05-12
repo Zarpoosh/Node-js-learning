@@ -3,13 +3,13 @@
 
 // logger("minoo")
 
-//! ---------------------------------------------------
+//! -----------------------filename----------------------------
 
 // const path=require("node:path")
 // const data = path.parse(__filename)
 // console.log(data);
 
-//! ---------------------------------------------------
+//! -------------------------os information--------------------------
 // const os=require("node:os")
 // const total=os.totalmem()
 // const free=os.freemem()
@@ -32,7 +32,7 @@
 // emitter.on("messageloged" , (data)=>{
 //     console.log("listener called", data);
 // })
-// emitter.emit("messageloged" , {id:1 , name:"minoo" })
+// emitter.emit("messageloged" , {id:1 , name:"minoo" })   // یه زنگی رو به صدا در میاره  و لیسینر ها شروع میکنن دستوراتی که براشون فرستاده میشه رو اجرا میکنن
 
 
 //! ---------------------------------------------------
@@ -49,12 +49,14 @@ const server=http.createServer((req, res)=>{
     }
 })
 
-// server.on("connection ", (socket)=>{
-//     console.log("new comection is connected");
-// })
+// // server.on("connection ", (socket)=>{
+// //     console.log("new comection is connected");
+// // })
 
 
 
 server.listen(3000)
 console.log("server is listening on port 3000 ");
 //! ---------------------------------------------------
+
+

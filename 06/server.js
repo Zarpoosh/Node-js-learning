@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
   // console.log(req.url, req.method)         // به جا اینکه اینا رو تو کنسول نشون بدیم
   const num=_.random(0,20)
   console.log(num);
-  res.setHeader("Cntent-Type", "text/html");
+  res.setHeader("Content-Type", "text/html");
 
   // res.write("<h1>hello minicode</h1>")
   // res.write("<p>hello world</p>")
